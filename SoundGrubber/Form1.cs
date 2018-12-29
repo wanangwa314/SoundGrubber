@@ -15,6 +15,17 @@ namespace SoundGrubber
         public Form1()
         {
             InitializeComponent();
+            InitUI();
         }
+
+        //Initialise recording controls and new instance of
+        //recorder object
+        private void newRecBtn_Click(object sender, EventArgs e)
+        {
+            InitRecordingControls();
+            Recoder recoder = new Recoder(directoryPathTextbx.Text);
+        }
+
+        
     }
 }

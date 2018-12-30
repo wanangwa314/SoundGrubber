@@ -13,9 +13,10 @@ namespace SoundGrubber
         //components before resources are initialised
         private void InitUI()
         {
+            
             fileNameTextbx.Enabled = false;
             directoryPathTextbx.Enabled = false;
-            browseBtn.Enabled = false;
+            
             startRecBtn.Visible = false;
             stopRecBtn.Visible = false;
             timeView.Visible = false;
@@ -26,12 +27,19 @@ namespace SoundGrubber
         private void InitRecordingControls()
         {
             newRecBtn.Enabled = false;
-            fileNameTextbx.Enabled = false;
-            directoryPathTextbx.Enabled = false;
-            browseBtn.Enabled = false;
-            startRecBtn.Visible = false;
-            stopRecBtn.Visible = false;
-            timeView.Visible = false;
+            fileNameTextbx.Enabled = true;
+            directoryPathTextbx.Enabled = true;
+          
+            startRecBtn.Visible = true;
+            stopRecBtn.Visible = true;
+            stopRecBtn.Enabled = false;
+            timeView.Visible = true;
+        }
+
+        private void OnStartRecording()
+        {
+            startRecBtn.Enabled = false;
+            stopRecBtn.Enabled = true;
         }
     }
 }

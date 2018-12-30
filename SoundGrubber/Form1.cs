@@ -12,6 +12,7 @@ namespace SoundGrubber
 {
     public partial class Form1 : Form
     {
+        Recoder recoder;
         public Form1()
         {
             InitializeComponent();
@@ -22,10 +23,26 @@ namespace SoundGrubber
         //recorder object
         private void newRecBtn_Click(object sender, EventArgs e)
         {
+
+            New_Recording_Dialog new_Recording_Dialog = new New_Recording_Dialog();
+            Task.Factory.StartNew(() => Application.Run(new_Recording_Dialog)).Wait();
+
+            directoryPathTextbx.Text = new_Recording_Dialog.FilePath;
+            fileNameTextbx.Text = new_Recording_Dialog.FileName;
             InitRecordingControls();
-            Recoder recoder = new Recoder(directoryPathTextbx.Text);
+            
+            recoder = new Recoder(string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text));
         }
 
-        
+        private void startRecBtn_Click(object sender, EventArgs e)
+        {
+            OnStartRecording();
+            recoder.StartRecording();        
+        }
+
+        private void stopRecBtn_Click(object sender, EventArgs e)
+        {
+            recoder.StopRecording();
+        }
     }
 }

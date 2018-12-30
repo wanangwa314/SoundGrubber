@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NAudio.Wave;
 using System.Timers;
+using System.Windows.Forms;
 
 namespace SoundGrubber
 {
@@ -16,7 +17,7 @@ namespace SoundGrubber
         private WasapiLoopbackCapture wasapiLoopbackCapture = null;//buffers audio data and provides to us
         private WaveFileWriter waveFileWriter = null;//Writes audio data to output file
         public bool RecordingState { get; set; }
-        private Timer recordingTime;
+        private System.Timers.Timer recordingTime;
         public string GetTime { get; set; }
 
         /// <summary>
@@ -27,12 +28,20 @@ namespace SoundGrubber
         public Recoder(string outputFilePath)
         {
             wasapiLoopbackCapture = new WasapiLoopbackCapture();
-            
+
             //Create new instance of WaveFileWriter and takes a filepath outputFilePath 
             //and format of the wave data being receive from WasapiLoopbackCapture
-            waveFileWriter = new WaveFileWriter(outputFilePath, wasapiLoopbackCapture.WaveFormat);
+            try
+            {
+                WaveFileWriter waveFileWriter = new WaveFileWriter(outputFilePath, wasapiLoopbackCapture.WaveFormat);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message, "App Error" , MessageBoxButtons.OK);
+            }
             
-            recordingTime = new Timer(1000);
+            
+            recordingTime = new System.Timers.Timer(1000);
             recordingTime.Elapsed += Time_Elapsed;
         }
 

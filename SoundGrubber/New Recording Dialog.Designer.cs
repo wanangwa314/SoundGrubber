@@ -30,9 +30,12 @@
         {
             this.browseBtn = new System.Windows.Forms.Button();
             this.fileNameLable = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.fileNameTextBx = new System.Windows.Forms.TextBox();
+            this.filePathTextBx = new System.Windows.Forms.TextBox();
             this.filePathLabel = new System.Windows.Forms.Label();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.okBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // browseBtn
@@ -43,6 +46,7 @@
             this.browseBtn.TabIndex = 0;
             this.browseBtn.Text = "Browse";
             this.browseBtn.UseVisualStyleBackColor = true;
+            this.browseBtn.Click += new System.EventHandler(this.browseBtn_Click);
             // 
             // fileNameLable
             // 
@@ -53,19 +57,19 @@
             this.fileNameLable.TabIndex = 1;
             this.fileNameLable.Text = "Enter name of file";
             // 
-            // textBox1
+            // fileNameTextBx
             // 
-            this.textBox1.Location = new System.Drawing.Point(16, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(328, 20);
-            this.textBox1.TabIndex = 2;
+            this.fileNameTextBx.Location = new System.Drawing.Point(16, 30);
+            this.fileNameTextBx.Name = "fileNameTextBx";
+            this.fileNameTextBx.Size = new System.Drawing.Size(328, 20);
+            this.fileNameTextBx.TabIndex = 2;
             // 
-            // textBox2
+            // filePathTextBx
             // 
-            this.textBox2.Location = new System.Drawing.Point(16, 75);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(328, 20);
-            this.textBox2.TabIndex = 3;
+            this.filePathTextBx.Location = new System.Drawing.Point(16, 75);
+            this.filePathTextBx.Name = "filePathTextBx";
+            this.filePathTextBx.Size = new System.Drawing.Size(328, 20);
+            this.filePathTextBx.TabIndex = 3;
             // 
             // filePathLabel
             // 
@@ -76,18 +80,41 @@
             this.filePathLabel.TabIndex = 4;
             this.filePathLabel.Text = "File Path";
             // 
+            // okBtn
+            // 
+            this.okBtn.Location = new System.Drawing.Point(269, 135);
+            this.okBtn.Name = "okBtn";
+            this.okBtn.Size = new System.Drawing.Size(75, 23);
+            this.okBtn.TabIndex = 5;
+            this.okBtn.Text = "Ok";
+            this.okBtn.UseVisualStyleBackColor = true;
+            this.okBtn.Click += new System.EventHandler(this.okBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Location = new System.Drawing.Point(160, 135);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(75, 23);
+            this.cancelBtn.TabIndex = 6;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // New_Recording_Dialog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(356, 271);
+            this.ClientSize = new System.Drawing.Size(356, 170);
+            this.Controls.Add(this.cancelBtn);
+            this.Controls.Add(this.okBtn);
             this.Controls.Add(this.filePathLabel);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.filePathTextBx);
+            this.Controls.Add(this.fileNameTextBx);
             this.Controls.Add(this.fileNameLable);
             this.Controls.Add(this.browseBtn);
             this.Name = "New_Recording_Dialog";
-            this.Text = "New_Recording_Dialog";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Text = "New Recording Dialog";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -97,8 +124,11 @@
 
         private System.Windows.Forms.Button browseBtn;
         private System.Windows.Forms.Label fileNameLable;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox fileNameTextBx;
+        private System.Windows.Forms.TextBox filePathTextBx;
         private System.Windows.Forms.Label filePathLabel;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.Button okBtn;
+        private System.Windows.Forms.Button cancelBtn;
     }
 }

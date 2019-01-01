@@ -37,7 +37,7 @@
             this.stopRecBtn = new System.Windows.Forms.Button();
             this.timeView = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.button1 = new System.Windows.Forms.Button();
+            this.cancelRecBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // newRecBtn
@@ -115,21 +115,22 @@
             this.timeView.TabIndex = 8;
             this.timeView.Text = "00:00:00";
             // 
-            // button1
+            // cancelRecBtn
             // 
-            this.button1.Location = new System.Drawing.Point(165, 172);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Cancel Recording";
-            this.button1.UseVisualStyleBackColor = true;
+            this.cancelRecBtn.Location = new System.Drawing.Point(165, 172);
+            this.cancelRecBtn.Name = "cancelRecBtn";
+            this.cancelRecBtn.Size = new System.Drawing.Size(132, 23);
+            this.cancelRecBtn.TabIndex = 9;
+            this.cancelRecBtn.Text = "Cancel Recording";
+            this.cancelRecBtn.UseVisualStyleBackColor = true;
+            this.cancelRecBtn.Click += new System.EventHandler(this.cancelRecBtn_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 416);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cancelRecBtn);
             this.Controls.Add(this.timeView);
             this.Controls.Add(this.stopRecBtn);
             this.Controls.Add(this.startRecBtn);
@@ -156,7 +157,7 @@
         private System.Windows.Forms.Button stopRecBtn;
         private System.Windows.Forms.Label timeView;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button cancelRecBtn;
     }
 }
 

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace SoundGrubber
 {
     public partial class Form1 : Form
     {
         Recoder recoder;
+        string filePath = null;
         public Form1()
         {
             InitializeComponent();
@@ -25,24 +20,41 @@ namespace SoundGrubber
         {
 
             New_Recording_Dialog new_Recording_Dialog = new New_Recording_Dialog();
-            Task.Factory.StartNew(() => Application.Run(new_Recording_Dialog)).Wait();
+            new_Recording_Dialog.ShowDialog();
 
+            cancelRecBtn.Visible = true;
             directoryPathTextbx.Text = new_Recording_Dialog.FilePath;
             fileNameTextbx.Text = new_Recording_Dialog.FileName;
             InitRecordingControls();
             
             recoder = new Recoder(string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text));
+            filePath = string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text);
         }
 
+        //Start recording and sets UI to a recording state 
         private void startRecBtn_Click(object sender, EventArgs e)
         {
             OnStartRecording();
             recoder.StartRecording();        
         }
 
+        //Stop recording and reset UI
         private void stopRecBtn_Click(object sender, EventArgs e)
         {
             recoder.StopRecording();
+            InitUI();//Resets UI
+        }
+
+        //Cancel a new recording and delete file if it was created
+        //And also resets UI
+        private void cancelRecBtn_Click(object sender, EventArgs e)
+        {
+            InitUI();//Resets UI
+            recoder.Dispose();
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
     }
 }

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using NAudio.Wave;
 using System.Timers;
 using System.Windows.Forms;
+
 
 namespace SoundGrubber
 {
@@ -33,7 +30,7 @@ namespace SoundGrubber
             //and format of the wave data being receive from WasapiLoopbackCapture
             try
             {
-                WaveFileWriter waveFileWriter = new WaveFileWriter(outputFilePath, wasapiLoopbackCapture.WaveFormat);
+                waveFileWriter = new WaveFileWriter(outputFilePath, wasapiLoopbackCapture.WaveFormat);
             }
             catch (Exception error)
             {
@@ -122,6 +119,24 @@ namespace SoundGrubber
             }
 
             return string.Format("{0}:{1}:{2}", hourStr, minStr, secStr);
+        }
+
+        /// <summary>
+        /// Release resources after use
+        /// </summary>
+        public void Dispose()
+        {
+            if(RecordingState == true && wasapiLoopbackCapture != null)
+            {
+                wasapiLoopbackCapture.StopRecording();
+            }
+            if(wasapiLoopbackCapture != null && waveFileWriter != null)
+            {
+                wasapiLoopbackCapture.Dispose();
+                waveFileWriter.Close();
+                waveFileWriter.Dispose();
+            }
+                
         }
         
     }

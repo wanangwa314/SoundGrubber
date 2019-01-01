@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 
@@ -20,7 +13,7 @@ namespace SoundGrubber
         {
             InitializeComponent();
             //Set default text in UI text file
-            fileNameTextBx.Text = "recording.wav";
+            fileNameTextBx.Text = "recording";
             filePathTextBx.Text = Directory.GetCurrentDirectory() + "\\" + fileNameTextBx.Text;
         }
         
@@ -68,7 +61,5 @@ namespace SoundGrubber
         {
             this.Close();
         }
-
-       
     }
 }

@@ -16,7 +16,8 @@ namespace SoundGrubber
             
             fileNameTextbx.Enabled = false;
             directoryPathTextbx.Enabled = false;
-            
+
+            cancelRecBtn.Visible = false;
             startRecBtn.Visible = false;
             stopRecBtn.Visible = false;
             timeView.Visible = false;

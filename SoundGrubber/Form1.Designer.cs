@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.newRecBtn = new System.Windows.Forms.Button();
             this.fileNameTextbx = new System.Windows.Forms.TextBox();
             this.directoryPathTextbx = new System.Windows.Forms.TextBox();
@@ -38,6 +39,7 @@
             this.timeView = new System.Windows.Forms.Label();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.cancelRecBtn = new System.Windows.Forms.Button();
+            this.recTime = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // newRecBtn
@@ -125,6 +127,10 @@
             this.cancelRecBtn.UseVisualStyleBackColor = true;
             this.cancelRecBtn.Click += new System.EventHandler(this.cancelRecBtn_Click);
             // 
+            // recTime
+            // 
+            this.recTime.Interval = 1000;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +164,7 @@
         private System.Windows.Forms.Label timeView;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button cancelRecBtn;
+        private System.Windows.Forms.Timer recTime;
     }
 }
 

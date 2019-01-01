@@ -12,6 +12,7 @@ namespace SoundGrubber
         {
             InitializeComponent();
             InitUI();
+            recTime.Tick += RecTime_Tick;
         }
 
         //Initialise recording controls and new instance of
@@ -35,13 +36,15 @@ namespace SoundGrubber
         private void startRecBtn_Click(object sender, EventArgs e)
         {
             OnStartRecording();
-            recoder.StartRecording();        
+            recoder.StartRecording();
+            recTime.Start();
         }
 
         //Stop recording and reset UI
         private void stopRecBtn_Click(object sender, EventArgs e)
         {
             recoder.StopRecording();
+            recTime.Stop();
             InitUI();//Resets UI
         }
 

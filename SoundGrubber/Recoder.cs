@@ -1,10 +1,12 @@
 ﻿using System;
 using NAudio.Wave;
 using System.Windows.Forms;
-
+using NAudio.CoreAudioApi;
 
 namespace SoundGrubber
 {
+    
+
     /// <summary>
     /// Records sound from soundcard using the Naudio WasapiWaveLoopback class
     /// </summary>
@@ -13,13 +15,12 @@ namespace SoundGrubber
         private WasapiLoopbackCapture wasapiLoopbackCapture = null;//buffers audio data and provides to us
         private WaveFileWriter waveFileWriter = null;//Writes audio data to output file
         public bool RecordingState { get; set; }
-       
-
+      
         /// <summary>
         /// Initializes new instance of SdOutRecorder and all its resources
         /// </summary>
         /// <param name="outputFilePath"></param>
-        
+
         public Recoder(string outputFilePath)
         {
             wasapiLoopbackCapture = new WasapiLoopbackCapture();
@@ -90,6 +91,7 @@ namespace SoundGrubber
             }
                 
         }
+        
         
     }
 }

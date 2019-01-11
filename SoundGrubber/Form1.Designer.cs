@@ -40,6 +40,7 @@
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.cancelRecBtn = new System.Windows.Forms.Button();
             this.recTime = new System.Windows.Forms.Timer(this.components);
+            this.stateLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // newRecBtn
@@ -131,11 +132,21 @@
             // 
             this.recTime.Interval = 1000;
             // 
+            // stateLabel
+            // 
+            this.stateLabel.AutoSize = true;
+            this.stateLabel.Location = new System.Drawing.Point(193, 207);
+            this.stateLabel.Name = "stateLabel";
+            this.stateLabel.Size = new System.Drawing.Size(76, 13);
+            this.stateLabel.TabIndex = 10;
+            this.stateLabel.Text = "Not Recording";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(474, 416);
+            this.Controls.Add(this.stateLabel);
             this.Controls.Add(this.cancelRecBtn);
             this.Controls.Add(this.timeView);
             this.Controls.Add(this.stopRecBtn);
@@ -165,6 +176,7 @@
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private System.Windows.Forms.Button cancelRecBtn;
         private System.Windows.Forms.Timer recTime;
+        private System.Windows.Forms.Label stateLabel;
     }
 }
 

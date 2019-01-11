@@ -35,6 +35,9 @@ namespace SoundGrubber
         //Start recording and sets UI to a recording state 
         private void startRecBtn_Click(object sender, EventArgs e)
         {
+            stateLabel.Text = "Waiting for audio playback";
+            //CheckForAudioPlayback();
+            stateLabel.Text = "Recording";
             OnStartRecording();
             recoder.StartRecording();
             recTime.Start();
@@ -43,6 +46,7 @@ namespace SoundGrubber
         //Stop recording and reset UI
         private void stopRecBtn_Click(object sender, EventArgs e)
         {
+            stateLabel.Text = "Not Recording";
             recoder.StopRecording();
             recTime.Stop();
             InitUI();//Resets UI
@@ -52,6 +56,7 @@ namespace SoundGrubber
         //And also resets UI
         private void cancelRecBtn_Click(object sender, EventArgs e)
         {
+            stateLabel.Text = "Not Recording";
             InitUI();//Resets UI
             recoder.Dispose();
             if (File.Exists(filePath))

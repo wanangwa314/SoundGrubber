@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+
+using NAudio.CoreAudioApi;
 
 namespace SoundGrubber
 {
@@ -18,6 +17,7 @@ namespace SoundGrubber
             
             fileNameTextbx.Enabled = false;
             directoryPathTextbx.Enabled = false;
+            newRecBtn.Enabled = true;
 
             cancelRecBtn.Visible = false;
             startRecBtn.Visible = false;
@@ -83,5 +83,23 @@ namespace SoundGrubber
             else { hourStr = hour.ToString(); }
             return string.Format("{0}:{1}:{2}", hourStr, minStr, secStr);
         }
+        
+        //Check any audio is being play or there is output on the sound device
+        private void CheckForAudioPlayback()
+        {
+            MMDeviceEnumerator mMDeviceEnumerator = new MMDeviceEnumerator();
+            MMDevice device = mMDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            int masterPeakVal = 0;
+            Task.Factory.StartNew(() =>
+            {
+                while (masterPeakVal == 0)
+                {
+                    System.Threading.Thread.Sleep(15);
+                    //masterPeakVal = Convert.ToInt32(device.AudioMeterInformation.MasterPeakValue);
+                    masterPeakVal = 1;
+                }
+            }).Wait();
+        }
+
     }
 }

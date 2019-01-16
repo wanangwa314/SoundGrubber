@@ -39,12 +39,14 @@ namespace SoundGrubber
             timeView.Visible = true;
         }
         
+        //Starts recording
         private void OnStartRecording()
         {
             startRecBtn.Enabled = false;
             stopRecBtn.Enabled = true;
         }
-
+        
+        //Updates when timeView label on UI
         private void RecTime_Tick(object sender, EventArgs e)
         {
             sec++;
@@ -60,7 +62,9 @@ namespace SoundGrubber
             }
             timeView.Text = TimeFormatter(sec, min, hour);
         }
-
+        
+        //Formats time values and return string in traditional time format 00h:00m:00s
+        //without h, m, s which are just for demonstration it return something like 01:02:35
         private string TimeFormatter(int sec, int min, int hour)
         {
             string secStr = "", minStr = "", hourStr = "";
@@ -85,6 +89,7 @@ namespace SoundGrubber
         }
         
         //Check any audio is being play or there is output on the sound device
+        //NOT YET IMPLEMENTED
         private void CheckForAudioPlayback()
         {
             MMDeviceEnumerator mMDeviceEnumerator = new MMDeviceEnumerator();

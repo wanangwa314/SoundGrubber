@@ -5,8 +5,6 @@ using NAudio.CoreAudioApi;
 
 namespace SoundGrubber
 {
-    
-
     /// <summary>
     /// Records sound from soundcard using the Naudio WasapiWaveLoopback class
     /// </summary>
@@ -59,11 +57,9 @@ namespace SoundGrubber
         {
             wasapiLoopbackCapture.StopRecording();
             RecordingState = false;
-            
-       
+          
             waveFileWriter.Dispose();
             waveFileWriter = null;
-
             wasapiLoopbackCapture.Dispose();
             
         }
@@ -88,10 +84,7 @@ namespace SoundGrubber
                 wasapiLoopbackCapture.Dispose();
                 waveFileWriter.Close();
                 waveFileWriter.Dispose();
-            }
-                
-        }
-        
-        
+            }       
+        }       
     }
 }

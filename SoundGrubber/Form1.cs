@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace SoundGrubber
 {
@@ -33,14 +34,17 @@ namespace SoundGrubber
         }
 
         //Start recording and sets UI to a recording state 
-        private void startRecBtn_Click(object sender, EventArgs e)
+        private async void startRecBtn_Click(object sender, EventArgs e)
         {
             stateLabel.Text = "Waiting for audio playback";
-            //CheckForAudioPlayback();
-            stateLabel.Text = "Recording";
-            OnStartRecording();
-            recoder.StartRecording();
-            recTime.Start();
+            startRecBtn.Enabled = false;
+
+            while (IsAudioPlaying() != true)
+            {
+                await Task.Delay(50);
+            }
+
+            startRecording();
         }
 
         //Stop recording and reset UI
@@ -63,6 +67,14 @@ namespace SoundGrubber
             {
                 File.Delete(filePath);
             }
+        }
+
+        private void startRecording()
+        {
+            stateLabel.Text = "Recording";
+            OnStartRecording();
+            recoder.StartRecording();
+            recTime.Start();
         }
     }
 }

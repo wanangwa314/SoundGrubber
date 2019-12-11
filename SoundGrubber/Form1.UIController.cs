@@ -9,6 +9,10 @@ namespace SoundGrubber
     {
         int sec = 0, min = 0, hour = 0;
         string time = "00:00:00";
+        private bool AudioPlaying = true;
+
+        MMDeviceEnumerator mMDeviceEnumerator = new MMDeviceEnumerator();
+        float masterPeakVal = 0;
 
         //Set state of UI controls to prevent premature activation of recording 
         //components before resources are initialised
@@ -90,21 +94,32 @@ namespace SoundGrubber
         
         //Check any audio is being play or there is output on the sound device
         //NOT YET IMPLEMENTED
-        private void CheckForAudioPlayback()
+        private async void CheckForAudioPlayback()
         {
-            MMDeviceEnumerator mMDeviceEnumerator = new MMDeviceEnumerator();
             MMDevice device = mMDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-            int masterPeakVal = 0;
-            Task.Factory.StartNew(() =>
-            {
+
+            if (IsAudioPlaying() == false)
                 while (masterPeakVal == 0)
                 {
-                    System.Threading.Thread.Sleep(15);
-                    //masterPeakVal = Convert.ToInt32(device.AudioMeterInformation.MasterPeakValue);
-                    masterPeakVal = 1;
+                    await Task.Delay(50);
+                    masterPeakVal = device.AudioMeterInformation.MasterPeakValue;
                 }
-            }).Wait();
+
         }
 
+        private bool IsAudioPlaying()
+        {
+            MMDevice device = mMDeviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            if (device.AudioMeterInformation.MasterPeakValue > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        
     }
 }

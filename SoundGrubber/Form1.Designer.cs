@@ -67,7 +67,6 @@
             this.directoryPathTextbx.Name = "directoryPathTextbx";
             this.directoryPathTextbx.Size = new System.Drawing.Size(454, 20);
             this.directoryPathTextbx.TabIndex = 2;
-            this.directoryPathTextbx.Text = "D:\\Users\\Martin\\Desktop\\NewRecording1.wav";
             // 
             // label1
             // 
@@ -156,8 +155,13 @@
             this.Controls.Add(this.directoryPathTextbx);
             this.Controls.Add(this.fileNameTextbx);
             this.Controls.Add(this.newRecBtn);
+            this.MaximumSize = new System.Drawing.Size(490, 455);
+            this.MinimumSize = new System.Drawing.Size(490, 455);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "SoundGrubber";
+            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.ResumeLayout(false);
             this.PerformLayout();
 

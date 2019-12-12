@@ -8,6 +8,7 @@ namespace SoundGrubber
     {
         public string FilePath { get; set; }
         public string FileName { get; set; }
+        public bool Initialize { get; set; }
 
         public New_Recording_Dialog()
         {
@@ -55,10 +56,12 @@ namespace SoundGrubber
 
             FileName = fileNameTextBx.Text;
             FilePath = string.Format(filePathTextBx.Text);
+            Initialize = true;
         }
         
         private void cancelBtn_Click(object sender, EventArgs e)
         {
+            Initialize = false; //Don't initialize recording resources if it's false
             this.Close();
         }
     }

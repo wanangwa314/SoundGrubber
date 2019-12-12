@@ -9,7 +9,7 @@ namespace SoundGrubber
     {
         int sec = 0, min = 0, hour = 0;
         string time = "00:00:00";
-        private bool AudioPlaying = true;
+        
 
         MMDeviceEnumerator mMDeviceEnumerator = new MMDeviceEnumerator();
         float masterPeakVal = 0;
@@ -18,15 +18,21 @@ namespace SoundGrubber
         //components before resources are initialised
         private void InitUI()
         {
+            sec = 0;
+            min = 0;
+            hour = 0;
             
             fileNameTextbx.Enabled = false;
             directoryPathTextbx.Enabled = false;
             newRecBtn.Enabled = true;
+            startRecBtn.Enabled = true;
 
             cancelRecBtn.Visible = false;
             startRecBtn.Visible = false;
             stopRecBtn.Visible = false;
             timeView.Visible = false;
+
+            timeView.Text = time;
         }
 
         //Reverse of InitUI method just a sets the state of 
@@ -68,7 +74,6 @@ namespace SoundGrubber
         }
         
         //Formats time values and return string in traditional time format 00h:00m:00s
-        //without h, m, s which are just for demonstration it return something like 01:02:35
         private string TimeFormatter(int sec, int min, int hour)
         {
             string secStr = "", minStr = "", hourStr = "";

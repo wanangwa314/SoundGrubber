@@ -105,6 +105,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(356, 170);
+            this.ControlBox = false;
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.okBtn);
             this.Controls.Add(this.filePathLabel);
@@ -114,7 +115,7 @@
             this.Controls.Add(this.browseBtn);
             this.Name = "New_Recording_Dialog";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "New Recording Dialog";
+            this.Text = "New Recording";
             this.ResumeLayout(false);
             this.PerformLayout();
 

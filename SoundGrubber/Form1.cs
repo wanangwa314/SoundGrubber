@@ -24,13 +24,20 @@ namespace SoundGrubber
             New_Recording_Dialog new_Recording_Dialog = new New_Recording_Dialog();
             new_Recording_Dialog.ShowDialog();
 
-            cancelRecBtn.Visible = true;
-            directoryPathTextbx.Text = new_Recording_Dialog.FilePath;
-            fileNameTextbx.Text = new_Recording_Dialog.FileName;
-            InitRecordingControls();
-            
-            recoder = new Recoder(string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text));
-            filePath = string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text);
+            if (new_Recording_Dialog.Initialize == true)
+            {
+                cancelRecBtn.Visible = true;
+                directoryPathTextbx.Text = new_Recording_Dialog.FilePath;
+                fileNameTextbx.Text = new_Recording_Dialog.FileName;
+                InitRecordingControls();
+
+                recoder = new Recoder(string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text));
+                filePath = string.Format("{0}\\{1}", directoryPathTextbx.Text, fileNameTextbx.Text);
+            }
+            else
+            {
+                new_Recording_Dialog = null;
+            }
         }
 
         //Start recording and sets UI to a recording state 
